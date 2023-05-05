@@ -1,0 +1,38 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "nodemon app.js",
+    "init": "npx sequelize init",
+    "migrate": "npx sequelize db:migrate",
+    "migrate-undo":"npx sequelize-cli db:migrate:undo:all",
+    "seed":"npx sequelize-cli db:seed:all",
+    "seed-undo":"npx sequelize-cli db:seed:undo:all",
+    "seed-role":"npx sequelize-cli db:seed --seed 001-role.seeder.js",
+    "seed-operator":"npx sequelize-cli db:seed --seed 002-operator.seeder.js",
+    "seed-user":"npx sequelize-cli db:seed --seed 003-user.seeder.js",
+    "seed-consonant":"npx sequelize-cli db:seed --seed 004-consonant.seeder.js",
+    "seed-kanji":"npx sequelize-cli db:seed --seed 005-kanji.seeder.js",
+    "seed-vocab":"npx sequelize-cli db:seed --seed 006-vocab.seeder.js",
+    "seed-grammar":"npx sequelize-cli db:seed --seed 007-grammar.seeder.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "bcrypt": "^5.0.1",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-fileupload": "^1.4.0",
+    "joi": "^17.6.0",
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.19",
+    "sequelize": "^6.21.3",
+    "sequelize-cli": "^6.4.1",
+    "winston": "^3.8.1"
+  }
+}
