@@ -1,9 +1,9 @@
-const { apiRespondHeader, errors, messages, httpStatusCode } = require('../utils/constant')
+const { apiResponseHeader, errors, messages, httpStatusCode } = require('../utils/constant')
 const BaseError = require("./base.error")
 
 class ResourceNotFound extends BaseError {
     constructor(msg = messages.failedToRetrieve) {
-        const { code, status, message } = apiRespondHeader(
+        const { code, status, message } = apiResponseHeader(
             httpStatusCode.BAD_REQUEST,
             messages.failed,
             msg

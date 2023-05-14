@@ -122,7 +122,7 @@ const update = async (req, res) => {
             req.body.password = await generateHash(req.body.password);
         }
         const result = await user.update(req.body);
-        if (result[0] === 0) {
+        if (result[0] === 0 || result === 0) {
             throw new ResourceNotFound(messages.failedToUpdate);
         } else {
             const updatedData = await user.handleUpdate(req.body.id)
@@ -157,7 +157,7 @@ const findById = async (req, res) => {
 const deleteById = async (req, res) => {
     try {
         const result = await user.deleteById(req.body);
-        if (result === 0) {
+        if (result[0] === 0 || result === 0) {
             throw new ResourceNotFound(messages.failedToDelete)
         }
         else {

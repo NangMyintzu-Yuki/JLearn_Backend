@@ -75,7 +75,7 @@ const create = async(req,res)=>{
 const update = async(req,res)=>{
   try {
     const result = await grammar.update(req.body);
-    if(result[0] === 0){
+    if (result[0] === 0 || result === 0){
       throw new ResourceNotFound(messages.failedToUpdate);
     }else{
       const updatedData = await grammar.handleUpdate(req.body.id);
@@ -98,7 +98,7 @@ const findAll = async(req,res) =>{
 const findById = async(req,res)=>{
   try {
     const result = await grammar.findById(req.body.id);
-    if(result === 0){
+    if (result[0] === 0 || result === 0){
       throw new ResourceNotFound();
     }else{
       const formatedResult = grammar.formatResponse(result);
@@ -112,7 +112,7 @@ const findById = async(req,res)=>{
 const deleteById = async(req,res)=>{
   try {
     const result = await grammar.deleteById(req.body);
-    if(result ===0){
+    if (result[0] === 0 || result === 0){
       throw new ResourceNotFound(messages.failedToDelete);
     }else{
       const formatedResult = grammar.formatResponse(null,messages.deleted);

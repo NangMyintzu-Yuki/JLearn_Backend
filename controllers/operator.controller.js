@@ -104,7 +104,7 @@ const update = async (req, res) => {
       req.body.password = await generateHash(req.body.password)
     }
     const result = await operator.update(req.body);
-    if (result[0] === 0) {
+    if (result[0] === 0 || result === 0) {
       throw new ResourceNotFound(messages.failedToUpdate);
     } else {
       const updatedData = await operator.handleUpdate(req.body.id)
@@ -139,7 +139,7 @@ const findById = async (req, res) => {
 const deleteById = async (req, res) => {
   try {
     const result = await operator.deleteById(req.body);
-    if (result === 0) {
+    if (result[0] === 0 || result === 0) {
       throw new ResourceNotFound(messages.failedToDelete)
     } else {
       const formatedResult = operator.formatResponse(null, messages.deleted);

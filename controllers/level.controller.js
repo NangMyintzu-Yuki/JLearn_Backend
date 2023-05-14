@@ -70,7 +70,7 @@ const create = async (req, res) => {
 const update = async (req, res) => {
   try {
     const result = await level.update(req.body)
-    if (result === 0) {
+    if (result[0] === 0 || result === 0) {
       throw new ResourceNotFound(messages.failedToUpdate)
     }
     else {
@@ -107,7 +107,7 @@ const findById = async (req, res) => {
 const deleteById = async (req, res) => {
   try {
     const result = await level.deleteById(req.body);
-    if (result === null) {
+    if (result[0] === 0 || result === 0) {
       throw new ResourceNotFound(messages.failedToDelete)
     }
     else {

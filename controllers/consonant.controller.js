@@ -104,7 +104,7 @@ const findById = async (req, res) => {
 const deleteById = async (req, res) => {
   try {
     const result = await consonant.deleteById(req.body);
-    if (result === 0) {
+    if (result[0] === 0 || result === 0) {
       throw new ResourceNotFound(messages.failedToDelete)
     } else {
       const formatedResult = consonant.formatResponse(null, messages.deleted);

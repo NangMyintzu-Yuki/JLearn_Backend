@@ -16,6 +16,9 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'role_id',
         sourceKey: 'role_id'
       })
+      User.hasMany(models.UserQuizSubmit,{
+        foreignKey:'user_id'
+      })
 
     }
   }

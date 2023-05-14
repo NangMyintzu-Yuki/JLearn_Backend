@@ -52,7 +52,17 @@ module.exports = (sequelize, DataTypes) => {
       // relation with grammar
       Operator.hasOne(models.Grammar, { foreignKey: 'created_by' })
       Operator.hasOne(models.Grammar, { foreignKey: 'updated_by' })
-      Operator.hasOne(models.Grammar, { foreignKey: 'deleted_by' })
+      Operator.hasOne(models.Grammar, { foreignKey: 'deleted_by' });
+
+      // relation with quiz
+      Operator.hasOne(models.Quiz, { foreignKey: 'created_by' })
+      Operator.hasOne(models.Quiz, { foreignKey: 'updated_by' })
+      Operator.hasOne(models.Quiz, { foreignKey: 'deleted_by' })
+  
+      // relation with user quiz submit
+      Operator.hasOne(models.UserQuizSubmit, { foreignKey: 'created_by' })
+      Operator.hasOne(models.UserQuizSubmit, { foreignKey: 'updated_by' })
+      Operator.hasOne(models.UserQuizSubmit, { foreignKey: 'deleted_by' })
 
     }
   }

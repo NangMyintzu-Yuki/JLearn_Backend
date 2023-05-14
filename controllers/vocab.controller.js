@@ -76,7 +76,7 @@ const create = async (req, res) => {
 const update = async (req, res) => {
   try {
     const result = await vocab.update(req.body);
-    if (result[0] === 0) {
+    if (result[0] === 0 || result === 0) {
       throw new ResourceNotFound(messages.failedToUpdate)
     } else {
       const updatedData = await vocab.handleUpdate(req.body.id);
@@ -99,7 +99,7 @@ const findById = async (req, res) => {
   try {
     const result = await vocab.findById(req.body.id)
     console.log('result',result)
-    if (result === 0) {
+    if (result === null || result[0] === 0 || result === 0) {
       throw new ResourceNotFound();
     } else {
       result.dataValues.Kanji = await result.getKanji();
@@ -114,7 +114,7 @@ const findById = async (req, res) => {
 const deleteById = async (req, res) => {
   try {
     const result = await vocab.deleteById(req.body);
-    if (result === 0) {
+    if (result[0] === 0 || result === 0) {
       throw new ResourceNotFound(messages.failedToDelete)
     } else {
       const formatedResult = vocab.formatResponse(null, messages.deleted)

@@ -73,7 +73,7 @@ const create = async (req, res) => {
 const update = async (req, res) => {
   try {
     const result = await kanji.update(req.body);
-    if (result[0] === 0) {
+    if (result[0] === 0 || result === 0) {
       throw new ResourceNotFound(messages.failedToUpdate)
     } else {
       const updatedData = await kanji.handleUpdate(req.body.id)
@@ -95,7 +95,7 @@ const findById = async (req, res) => {
   try {
     const result = await kanji.findById(req.body.id)
     console.log("result",result);
-    if (result === 0) {
+    if (result[0] === 0 || result === 0) {
       throw new ResourceNotFound();
     } else {
       const formatedResult = kanji.formatResponse(result);
@@ -108,7 +108,7 @@ const findById = async (req, res) => {
 const deleteById = async (req, res) => {
   try {
     const result = await kanji.deleteById(req.body);
-    if (result === 0) {
+    if (result[0] === 0 || result === 0) {
       throw new ResourceNotFound(messages.failedToDelete)
     } else {
       const formatedResult = kanji.formatResponse(null, messages.deleted)

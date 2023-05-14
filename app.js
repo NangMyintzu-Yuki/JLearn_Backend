@@ -15,6 +15,8 @@ const consonantRoutes = require('./routes/consonant.routes')
 const kanjiRoutes = require('./routes/kanji.routes')
 const vocabRoutes = require("./routes/vocab.routes")
 const grammarRoutes = require("./routes/grammar.routes");
+const quizRoutes = require('./routes/quiz.routes');
+const userQuizSubmitRoutes = require('./routes/user_quiz_submit.routes');
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -37,6 +39,8 @@ app.use("/", consonantRoutes)
 app.use("/", kanjiRoutes)
 app.use("/", vocabRoutes)
 app.use("/", grammarRoutes)
+app.use("/", quizRoutes)
+app.use("/", userQuizSubmitRoutes)
 
 const PORT = process.env.APP_PORT || 3000;
 
