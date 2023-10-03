@@ -12,6 +12,10 @@ const isObjEmpty = (obj) =>{
 
 const ASSOCIATION = {
   get: (model,params) =>{
+    console.log("params from association=>",params)
+    const {keyword,level} = params;
+    console.log("keyword from ===>",keyword)
+    console.log("level from ===>",level)
     let relationshipModel = [];
     let searchQuery = {};
     let operator = [
@@ -52,7 +56,8 @@ const ASSOCIATION = {
         ];
         console.log("params===>",params);
         console.log("isObjectEmpty",isObjEmpty(params))
-        searchQuery = isObjEmpty(params) === false && searchKanji(params)
+        searchQuery = keyword != undefined && searchKanji(params)
+        // searchQuery = isObjEmpty(params) === false && searchKanji(params)
         break;
         case db.Vocab:
           relationshipModel = [
@@ -76,7 +81,8 @@ const ASSOCIATION = {
               attributes:["id","level","kanji","romaji","onyomi","kunyomi","stroke"]
             }
           ];
-        searchQuery = isObjEmpty(params) === false && searchVocab(params);
+        searchQuery = keyword != undefined && searchVocab(params);
+        // searchQuery = isObjEmpty(params) === false && searchVocab(params);
           break;
           case db.Grammar:
         relationshipModel = [
@@ -96,7 +102,8 @@ const ASSOCIATION = {
             attributes: ["id", "fullname", "username"],
           },
         ];
-        searchQuery = isObjEmpty(params) === false && searchGrammar(params);
+        searchQuery = keyword != undefined && searchGrammar(params);
+        // searchQuery = isObjEmpty(params) === false && searchGrammar(params);
 
     }
     return { relationshipModel,searchQuery};

@@ -74,6 +74,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull:true,
       type:DataTypes.STRING,
     },
+    mark:{
+      allowNull:true,
+      type:DataTypes.INTEGER,
+    },
     created_by:{
       allowNull:false,
       type:DataTypes.INTEGER,

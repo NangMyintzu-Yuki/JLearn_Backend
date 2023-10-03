@@ -88,8 +88,17 @@ const update = async (req, res) => {
 }
 const findAll = async (req, res) => {
   try {
-    const result = await vocab.findAll(req.query);
-    console.log("findAll", result)
+    let result;
+    if (req.query.level) {
+      result = await vocab.findByLevel(
+        "level",
+        req.query.level,
+        req.query,
+        true
+      );
+    } else {
+      result = await vocab.findAll(req.query);
+    }
     res.json(result);
   } catch (err) {
     handleError(res, err, errors.RETRIEVE_ERROR)

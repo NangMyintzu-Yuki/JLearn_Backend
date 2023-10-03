@@ -85,6 +85,8 @@ const userLogin = async (req, res) => {
 }
 const operatorLogin = async (req, res) => {
   try {
+    logger.error(req.body)
+    console.log('req.body', req.body)
     const data = await login(req.body, true);
     data.dataValues.Role = await data.getRole();
     

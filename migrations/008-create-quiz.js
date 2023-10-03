@@ -43,6 +43,10 @@ module.exports = {
         allowNull: true,
         type: Sequelize.STRING,
       },
+      mark:{
+        allowNull:true,
+        type:Sequelize.STRING,
+      },
       created_by: {
         allowNull: false,
         type: Sequelize.INTEGER,

@@ -85,7 +85,17 @@ const update = async (req, res) => {
 }
 const findAll = async (req, res) => {
   try {
-    const result = await kanji.findAll(req.query);
+    let result;
+    if (req.query.level) {
+      result = await kanji.findByLevel(
+        "level",
+        req.query.level,
+        req.query,
+        true
+      );
+    } else {
+      result = await kanji.findAll(req.query);
+    }
     res.json(result);
   } catch (err) {
     handleError(res, err, errors.RETRIEVE_ERROR)

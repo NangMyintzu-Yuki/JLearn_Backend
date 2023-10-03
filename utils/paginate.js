@@ -22,6 +22,7 @@ const paginate = async(model,pageSize,pageLimit,sortBy="updated_at",orderBy="des
             const {relationshipModel,searchQuery} = ASSOCIATION.get(model,params);
             options["include"] = relationshipModel;
             search = searchQuery;
+            console.log("searc===>",search)
             if(Object.keys(search).length){
                 options = {...options,...search}
             }

@@ -68,6 +68,10 @@ module.exports = (sequelize, DataTypes) => {
         allowNull:false,
         type:DataTypes.INTEGER,
       },
+      is_correct:{
+          allowNull:false,
+          type:DataTypes.BOOLEAN
+      },
       created_by: {
         allowNull: false,
         type: DataTypes.INTEGER,

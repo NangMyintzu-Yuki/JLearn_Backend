@@ -16,6 +16,9 @@ class BaseController {
     findByCustomId(key, value, query, showAll) {
         return this.services.findByCustomId(key, value, query, showAll);
     }
+    findByLevel(key, value, query, showAll) {
+        return this.services.findByLevel(key, value, query, showAll);
+    }
     update(data, transaction) {
         return this.services.update(data, transaction);
     }

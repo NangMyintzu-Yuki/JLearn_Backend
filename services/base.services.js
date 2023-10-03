@@ -90,7 +90,98 @@ class Services {
             this.model.findByPk(id,{transaction});
         }
     }
+    async findByLevel(key,value,query,showAll=false){
+        console.log("query=>",query)
+
+        let options = {};
+        const {
+            page_at:page,
+            row_count:limit,
+            sort_by,
+            order_by,
+            ...params
+        } = query;
+        options[key] = value;
+        let search = {
+            where: {
+                level: value,
+            },
+        };
+        if(showAll){
+            if(query.level){
+                search = {
+                    where: {
+                        level: value,
+                    },
+                };
+                if(query.keyword){
+                    search = {
+                        where: {
+                            [Op.or]: [
+                                {
+                                    kanji: getLikeOp(query.keyword)
+                                },
+                                // {
+                                //     stroke: getLikeOp(query.keyword)
+                                // },
+                                {
+                                    romaji: getLikeOp(query.keyword)
+                                },
+                                // {
+                                //     kunyomi: getLikeOp(query.keyword)
+                                // },
+                                // {
+                                //     onyomi: getLikeOp(query.keyword)
+                                // },
+                                {
+                                    meaning: getLikeOp(query.keyword)
+                                }
+                            ],
+                            level:value
+                        }
+                    };
+
+                }
+            }
+           
+            let { count, rows } = await this.model.findAndCountAll(search);
+            const pagination = {
+                page_at: page,
+                total_page: getTotalPage(count, limit),
+                total_records_count: count,
+                total_count_per_page: rows.length,
+            }
+            const { code, status, message } = apiResponseHeader(
+                httpStatusCode.OK,
+                messages.success,
+                messages.retrieved
+            );
+            return {
+                code,
+                status,
+                message,
+                pagination,
+                data: rows,
+            };
+        }else{
+            return this.model.findOne(search);
+        }
+    }
+
+   
 }
+const getTotalPage = (totalCount, limit) => {
+    if (totalCount < limit) {
+        return 1;
+    }
+    return Math.ceil(totalCount / limit);
+}
+const getLikeOp = (keyword) => {
+    let obj = {
+        [Op.like]: `%${keyword}%`,
+    };
+    return obj;
+};
 
 // const AWS = require("aws-sdk");
 

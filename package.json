@@ -21,6 +21,7 @@
     "seed-quiz":"npx sequelize-cli db:seed --seed 008-quiz.seeder.js",
     "seed-user-quiz-submit":"npx sequelize-cli db:seed --seed 009-user-quiz-submit.seeder.js",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "migrate-undo-quiz":"npx sequelize-cli db:migrate:undo:all --to 008-create-quiz.js",
     "migrate-undo-user-quiz-submit":"npx sequelize-cli db:migrate:undo:all --to 009-create-user-quiz-submit.js"
   },
   "author": "",

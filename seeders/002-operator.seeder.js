@@ -16,10 +16,10 @@ module.exports = {
       "operators",
       [
         {
-          id: 2,
+          
           role_id: 1,
           fullname: 'Operator Two',
-          username: 'Operator Tow',
+          username: 'Operator Two',
           email: 'superadmin2@gmail.com',
           phone: '09876543s223',
           password: await generateHash('superadminpassword'),

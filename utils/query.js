@@ -8,7 +8,7 @@ const getLikeOp = (keyword) => {
 };
 const searchKanji = (param) =>{
   const { keyword } = param;
-  console.log('keyword',keyword)
+ 
   return {
      where:{
       [Op.or] :[
