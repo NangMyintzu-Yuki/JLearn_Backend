@@ -2,9 +2,9 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "api/index.js",
   "scripts": {
-      "dev": "export NODE_ENV=development && node app.js",
+    "dev": "export NODE_ENV=development && node app.js",
     "start": "node index.js", 
     "init": "npx sequelize init",
     "migrate": "npx sequelize db:migrate",
