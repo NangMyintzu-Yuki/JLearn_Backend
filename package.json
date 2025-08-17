@@ -5,7 +5,7 @@
   "main": "api/index.js",
   "scripts": {
     "dev": "export NODE_ENV=development && node app.js",
-    "start": "node index.js", 
+    "start": "node index.js",
     "init": "npx sequelize init",
     "migrate": "npx sequelize db:migrate",
     "migrate-undo": "npx sequelize-cli db:migrate:undo:all",
