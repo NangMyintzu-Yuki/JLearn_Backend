@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "api/index.js",
+  "engines": {
+  "node": "22.x"
+},
   "scripts": {
-    "dev": "export NODE_ENV=development && node app.js",
-    "start": "node index.js",
+    "dev": "export NODE_ENV=development && node api/index.js",
+    "start": "node api/index.js",
     "init": "npx sequelize init",
     "migrate": "npx sequelize db:migrate",
     "migrate-undo": "npx sequelize-cli db:migrate:undo:all",

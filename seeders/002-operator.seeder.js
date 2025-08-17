@@ -16,7 +16,7 @@ module.exports = {
       "operators",
       [
         {
-          
+          id:1,
           role_id: 1,
           fullname: 'Operator Two',
           username: 'Operator Two',

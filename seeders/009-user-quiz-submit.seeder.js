@@ -15,9 +15,11 @@ module.exports = {
       {
         id: 1,
         quiz_id: 1,
+        user_id:2,
         user_answer: 1,
         created_by: 1,
         updated_by: 1,
+        is_correct:false,
         created_at: new Date(),
         updated_at: new Date(),
       }
